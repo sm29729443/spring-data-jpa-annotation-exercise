@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
+import java.util.Optional;
 
 @Service
 public class DepartmentServiceImpl implements DepartmentService {
@@ -43,5 +44,13 @@ public class DepartmentServiceImpl implements DepartmentService {
 
         departmentEntity.setEmployees(employeeEntityArrayList);
         departmentRepository.save(departmentEntity);
+    }
+
+    @Override
+    public void deleteDepartmentWithEmployees() {
+        Optional<DepartmentEntity> byId = departmentRepository.findById(1L);
+        if (byId.isPresent()) {
+            departmentRepository.delete(byId.get());
+        }
     }
 }

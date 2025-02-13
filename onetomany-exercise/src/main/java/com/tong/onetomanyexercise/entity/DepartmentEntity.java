@@ -27,7 +27,7 @@ public class DepartmentEntity {
             orphanRemoval = true,      // 移除部門時，若員工不再與任何部門關聯則自動刪除
             fetch = FetchType.LAZY     // 預設為延遲抓取，只有需要時才查詢員工
     )
-    @JoinColumn(name = "department_id") // 告訴 JPA 維護聯繫的方式是透過 FK，而不是中間表
+//    @JoinColumn(name = "department_id") // 告訴 JPA 維護聯繫的方式是透過 FK，而不是中間表
     private List<EmployeeEntity> employees = new ArrayList<>();
 
     @Override

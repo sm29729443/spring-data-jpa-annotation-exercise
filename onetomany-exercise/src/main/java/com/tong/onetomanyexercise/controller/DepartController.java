@@ -27,6 +27,12 @@ public class DepartController {
         return "success";
     }
 
+    @GetMapping("/deleteDepartmentWithEmployees")
+    public String deleteDepartmentWithEmployees(){
+        departmentService.deleteDepartmentWithEmployees();
+        return "success";
+    }
+
 
 
 }

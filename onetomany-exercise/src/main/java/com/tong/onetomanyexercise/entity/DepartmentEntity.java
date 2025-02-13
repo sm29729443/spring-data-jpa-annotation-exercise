@@ -22,14 +22,21 @@ public class DepartmentEntity {
 
     // 使用 mappedBy 表示 Employee 的 department 欄位是擁有關聯的一方
     @OneToMany(
-            mappedBy = "department",            // 指定 Employee 中的 department 屬性作為關聯所有者
-            cascade = CascadeType.ALL,           // 操作傳遞（例如 persist, remove 都會傳遞到員工）
-            orphanRemoval = true,               // 移除部門時，若員工不再與任何部門關聯則自動刪除
-            fetch = FetchType.LAZY               // 預設為延遲抓取，只有需要時才查詢員工
+            mappedBy = "department",   // 指定 Employee 中的 department 屬性作為關聯所有者
+            cascade = CascadeType.ALL, // 操作傳遞（例如 persist, remove 都會傳遞到員工）
+            orphanRemoval = true,      // 移除部門時，若員工不再與任何部門關聯則自動刪除
+            fetch = FetchType.LAZY     // 預設為延遲抓取，只有需要時才查詢員工
     )
+    @JoinColumn(name = "department_id") // 告訴 JPA 維護聯繫的方式是透過 FK，而不是中間表
     private List<EmployeeEntity> employees = new ArrayList<>();
 
-
+    @Override
+    public String toString() {
+        return "DepartmentEntity{" +
+                "deptName='" + deptName + '\'' +
+                ", id=" + id +
+                '}';
+    }
 
     // 方便操作的輔助方法：添加員工
     public void addEmployee(EmployeeEntity employee) {

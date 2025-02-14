@@ -33,6 +33,12 @@ public class DepartController {
         return "success";
     }
 
+    @GetMapping("/deleteDepartment")
+    public String deleteDepartment(){
+        departmentService.deleteDepartment();
+        return "success";
+    }
+
 
 
 }

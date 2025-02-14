@@ -30,13 +30,16 @@ public class DepartmentServiceImpl implements DepartmentService {
     @Override
     public void createDepartmentWithEmployees() {
         DepartmentEntity departmentEntity = new DepartmentEntity();
-        departmentEntity.setDeptName("部門 1");
+        departmentEntity.setDeptName("部門 1234");
+//        departmentEntity.setId(2L);
 
         EmployeeEntity employeeEntity1 = new EmployeeEntity();
         employeeEntity1.setName("員工 1");
+        employeeEntity1.setDepartment(departmentEntity);
 
         EmployeeEntity employeeEntity2 = new EmployeeEntity();
         employeeEntity2.setName("員工 2");
+        employeeEntity2.setDepartment(departmentEntity);
 
         ArrayList<EmployeeEntity> employeeEntityArrayList = new ArrayList<>();
         employeeEntityArrayList.add(employeeEntity1);
@@ -52,5 +55,10 @@ public class DepartmentServiceImpl implements DepartmentService {
         if (byId.isPresent()) {
             departmentRepository.delete(byId.get());
         }
+    }
+
+    @Override
+    public void deleteDepartment() {
+        departmentRepository.deleteById(1L);
     }
 }

@@ -9,4 +9,6 @@ public interface DepartmentService {
     public void createDepartmentWithEmployees();
 
     void deleteDepartmentWithEmployees();
+
+    void deleteDepartment();
 }
